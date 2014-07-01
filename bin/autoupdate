@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'forever'
+require 'active_support/core_ext'
+
+Forever.run do
+  every 1.day, at: '10:00' do
+    shell_value = `brew update`
+    STDOUT.puts "#{Time.now.strftime("%Y-%m-%d")} : #{shell_value}"
+  end
+end
